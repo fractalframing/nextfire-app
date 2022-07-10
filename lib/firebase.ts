@@ -31,3 +31,5 @@ export function postToJson(doc: DocumentSnapshot) {
     updatedAt: data.updatedAt.toMillis(),
   }
 };
+
+export const serverTimestamp = firebase.firestore.FieldValue.serverTimestamp;
