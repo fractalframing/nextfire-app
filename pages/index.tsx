@@ -1,10 +1,15 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import toast from "react-hot-toast";
+import Link from "next/link";
+import Loader from "../components/Loader";
 
 export default function Home() {
   return (
-    <div>
-    </div>
-  )
+    <main>
+      <button onClick={() => toast.success("hello toast")}>Toast me</button>
+      <Link href="/enter">
+        <a>Enter</a>
+      </Link>
+      <Loader show />
+    </main>
+  );
 }
