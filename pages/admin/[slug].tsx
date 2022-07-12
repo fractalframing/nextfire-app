@@ -10,6 +10,7 @@ import { useForm } from "react-hook-form";
 import ReactMarkdown from "react-markdown";
 import Link from "next/link";
 import toast from "react-hot-toast";
+import ImageUploader from "../../components/ImageUploader";
 
 export default function AdminPostEdit(props) {
   return (
@@ -87,8 +88,16 @@ function PostForm({ defaultValues, postRef, preview }) {
           <ReactMarkdown>{watch("content")}</ReactMarkdown>
         </div>
       )}
+      <ImageUploader />
       <div className={preview ? styles.hidden : styles.controls}>
-        <textarea name="content" {...register("content")}></textarea>
+        <textarea
+          name="content"
+          {...register("content", {
+            maxLength: { value: 20000, message: "content is too long" },
+            minLength: { value: 10, message: "content is too short" },
+            required: { value: true, message: "content is required" },
+          })}
+        ></textarea>
         <fieldset>
           <input
             className={styles.checkbox}
